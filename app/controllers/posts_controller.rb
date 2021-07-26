@@ -1,17 +1,17 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    render json: @posts, include: :comments
+    render json: @posts, include: [:user, {comments: {include: :user}}]
   end
 
   def create
-    @post = Post.create comment_params
+    @post = Post.create post_params
     render json: @post, except: :password_digest
   end
 
   private
 
-  def comment_params
-    params.require(:post).permit(:user, :input, :date)
+  def post_params
+    params.require(:post).permit(:input, :date).merge(user: @user)
   end
 end

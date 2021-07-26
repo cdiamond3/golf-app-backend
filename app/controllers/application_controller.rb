@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
         payload = decoded_token.first
         user_id = payload["user_id"]
 
-        @user_id = User.find user_id
+        @user = User.find user_id
       rescue
         render json: { error: "Invalid Token" }, status: :forbidden
       end

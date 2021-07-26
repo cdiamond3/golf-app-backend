@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def index
     @comments = Comment.all
-    render json: @comments 
+    render json: @comments, include: :user
   end
 
   def create
@@ -12,6 +12,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:input, :post_id)
+    params.require(:comment).permit(:input, :post_id).merge(user: @user)
   end
 end
