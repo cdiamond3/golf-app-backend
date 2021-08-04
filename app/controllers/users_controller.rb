@@ -8,11 +8,11 @@ class UsersController < ApplicationController
   end
   
   def show
-    render json: @user, include: [:posts, comments: {include:[:ratings]}], methods: :average_user_rating
+    render json: @user, include: [:posts, comments: {include:[:ratings]}], methods: [:average_user_rating, :rating_name, :ratings_sum, :ratings_count]
   end
 
   def profile
-    render json: @user, include: [:posts, comments: {include:[:ratings]}], methods: :average_user_rating
+    render json: @user, include: [:posts, comments: {include:[:ratings]}], methods: [:average_user_rating, :rating_name, :ratings_sum, :ratings_count]
   end
 
   def create
