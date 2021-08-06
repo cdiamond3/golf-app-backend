@@ -4,15 +4,15 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: @users, include: [:posts, comments: {include:[:ratings]}]
+    render json: @users, include: [:posts, :comments]
   end
   
   def show
-    render json: @user, include: [:posts, comments: {include:[:ratings]}], methods: [:average_user_rating, :rating_name, :ratings_sum, :ratings_count]
+    render json: @user, include: [:posts, :comments], methods: [:average_user_rating, :rating_name, :ratings_sum, :ratings_count]
   end
 
   def profile
-    render json: @user, include: [:posts, comments: {include:[:ratings]}], methods: [:average_user_rating, :rating_name, :ratings_sum, :ratings_count]
+    render json: @user, include: [:posts, :comments], methods: [:average_user_rating, :rating_name, :ratings_sum, :ratings_count]
   end
 
   def create

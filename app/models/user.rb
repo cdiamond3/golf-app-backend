@@ -25,12 +25,9 @@ class User < ApplicationRecord
         when 2..3
             "Novice Instructor"
         when 3..4
-            "Semi Pro Instrcutor"
+            "Semi Pro Instructor"
         when 4..5
-            "Elite instructor"
+            "Elite Instructor"
     end
 end
-
-
-
 end
